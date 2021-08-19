@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Checkout from '../../Checkout/Checkout';
 
-function CustomerForm(props) {
+function CustomerForm() {
     let [name, setName] = useState('');
     let [address, setAddress] = useState('');
     let [city, setCity] = useState('');
     let [zip, setZip] = useState('');
-    let propHandoff = {name, address, city, zip, props};
+    let propHandoff = [name, address, city, zip];
 
     let history = useHistory();
 

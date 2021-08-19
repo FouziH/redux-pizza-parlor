@@ -1,8 +1,10 @@
 import react from 'react';
 
-function Checkout(props) {
+function Checkout({propHandoff}) {
+
+    console.log(propHandoff)
     return (
-        "stringeeee"
+        `${propHandoff}`
     )
 }
 
