@@ -3,20 +3,29 @@ import react from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Checkout from '../../Checkout/Checkout';
-
+import { useSelector, useDispatch } from 'react-redux';
 
 function CustomerForm() {
     let [name, setName] = useState('');
     let [address, setAddress] = useState('');
     let [city, setCity] = useState('');
     let [zip, setZip] = useState('');
-    // let propHandoff = [name, address, city, zip];
 
-    let history = useHistory();
+    const history = useHistory();
+    const dispatch = useDispatch(); 
 
     function submitFunc(e) {
         e.preventDefault();
-            history.push('/checkout');
+
+        // dispatch local state to global state
+        dispatch({
+            type: 'CUSTOMER_FORM_INPUTS',
+            payload: {
+                name, address, city, zip
+            }
+        });
+
+        history.push('/checkout');
         }
 
     return (
