@@ -1,10 +1,10 @@
 import react from 'react';
 
-function Checkout({propHandoff}) {
+function Checkout({name}) {
 
-    console.log(propHandoff)
+    console.log(name)
     return (
-        `${propHandoff}`
+        `${name}`
     )
 }
 

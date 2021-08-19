@@ -4,26 +4,20 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Checkout from '../../Checkout/Checkout';
 
+
 function CustomerForm() {
     let [name, setName] = useState('');
     let [address, setAddress] = useState('');
     let [city, setCity] = useState('');
     let [zip, setZip] = useState('');
-    let propHandoff = [name, address, city, zip];
+    // let propHandoff = [name, address, city, zip];
 
     let history = useHistory();
 
-    const goToCheckout = () => {
-        history.push('/checkout');
-    }
-
     function submitFunc(e) {
         e.preventDefault();
-        <Checkout
-        propHandoff = {propHandoff}
-        />
-        goToCheckout();
-    }
+            history.push('/checkout');
+        }
 
     return (
         <>
