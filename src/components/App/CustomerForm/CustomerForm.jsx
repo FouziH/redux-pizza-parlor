@@ -1,16 +1,29 @@
+import axios from 'axios';
 import react from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Checkout from '../../Checkout/Checkout';
 
 function CustomerForm() {
-let [name, setName] = useState('');
-let [address, setAddress] = useState('');
-let [city, setCity] = useState('');
-let [zip, setZip] = useState('');
+    let [name, setName] = useState('');
+    let [address, setAddress] = useState('');
+    let [city, setCity] = useState('');
+    let [zip, setZip] = useState('');
+    let propHandoff = [name, address, city, zip];
 
-function submitFunc(e) {
-    e.preventDefault();
-    console.log("we clicked it", name, address, city, zip);
-}
+    let history = useHistory();
+
+    const goToCheckout = () => {
+        history.push('/checkout');
+    }
+
+    function submitFunc(e) {
+        e.preventDefault();
+        <Checkout
+        propHandoff = {propHandoff}
+        />
+        goToCheckout();
+    }
 
     return (
         <>
@@ -34,3 +47,4 @@ function submitFunc(e) {
 }
 
 export default CustomerForm;
+
