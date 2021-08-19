@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
+import StartOrder from '../StarOrder/StarOrder';
 
 function App() {
   
@@ -28,6 +29,7 @@ function App() {
         </Route>
         <Route path="/order" exact>
           {/* Enter Select pizza page */}
+          <StartOrder />
         </Route>
         <Route path="/customer" exact>
           {/* Enter Select pizza page */}
