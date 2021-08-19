@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import {HashRouter as Router, Route, Link} from 'react-router-dom'
+import CustomerForm from './CustomerForm/CustomerForm';
 
 function App() {
   
@@ -30,7 +31,7 @@ function App() {
           {/* Enter Select pizza page */}
         </Route>
         <Route path="/customer" exact>
-          {/* Enter Select pizza page */}
+          <CustomerForm/>
         </Route>
         <Route path="/checkout" exact>
           {/* Enter Select pizza page */}
