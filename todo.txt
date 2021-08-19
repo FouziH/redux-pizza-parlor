@@ -1,0 +1,18 @@
+PHASE 1:
+    [] SETUP THE DB NAME "pizza_parlor"
+    [] NPM INSTALL
+    []
+PHASE 2
+   [] Router
+    [] npm install react-router-dom
+        [] wire the router to endpoints
+      
+   [] Redux
+Create 4 component
+    [] select pizza page
+    [] customer info form 
+    [] checkout form
+
+Admin
+    [] list of the orders 
+
