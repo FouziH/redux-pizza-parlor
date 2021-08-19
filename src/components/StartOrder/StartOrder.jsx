@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-//import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import StartOrderItem from '../StartOrderItem/StartOrderItem';
 import './StartOrder.css';
-function StartOrder () {
 
-    //let dispatch = useDispatch();
+
+function StartOrder () {
+    const pizzaOrder = useSelector(state => state.pizzaReducer)
+    let dispatch = useDispatch();
 
     useEffect(() => {
         getPizzas();
@@ -18,10 +20,18 @@ function StartOrder () {
             url: '/api/pizza'
           }).then( response => {
             console.log(response.data);
-            setPizzas(response.data)
+            setPizzas(response.data);
           }).catch( error => {
             console.log('error on GET', error);
           });
+    }
+
+    const addPizzaToOrder = (pizza) => {
+        console.log(pizza);
+        dispatch({
+            type: 'ADD_PIZZA_TO_ORDER',
+            payload: pizza
+        })
     }
 
     return(
@@ -30,7 +40,9 @@ function StartOrder () {
         {pizzas.map((pizza) => (
             <StartOrderItem 
                 key={ pizza.id }
-                pizza={ pizza } 
+                pizza={ pizza }
+                pizzaOrder={ pizzaOrder }
+                addPizzaToOrder={addPizzaToOrder} 
             />
         ))}
         
