@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import StartOrderItem from '../StartOrderItem/StartOrderItem';
 import './StartOrder.css';
 
 
 function StartOrder () {
+    let history = useHistory();
     const pizzaOrder = useSelector(state => state.pizzaReducer)
     let dispatch = useDispatch();
 
@@ -13,7 +15,8 @@ function StartOrder () {
         getPizzas();
     }, []);
 
-    const [pizzas, setPizzas] = useState([])
+    const [pizzas, setPizzas] = useState([]);
+
     const getPizzas = () => {
         axios({
             method: 'GET',
@@ -34,6 +37,13 @@ function StartOrder () {
         })
     }
 
+    const removePizzaFromOrder = (pizza) => {
+        dispatch({
+            type: 'REMOVE_PIZZA_FROM_ORDER',
+            payload: pizza
+        })
+    }
+
     return(
         <>
         <h2>Step 1: Select Your Pizza</h2>
@@ -43,10 +53,15 @@ function StartOrder () {
                 pizza={ pizza }
                 pizzaOrder={ pizzaOrder }
                 addPizzaToOrder={addPizzaToOrder} 
+                removePizzaFromOrder={removePizzaFromOrder}
             />
         ))}
         
-        <button>NEXT</button>
+        <button 
+            onClick={() => history.push('/customer')}
+        >
+            NEXT
+        </button>
         </>
     )
 

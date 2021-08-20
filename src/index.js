@@ -9,9 +9,17 @@ import { Provider } from 'react-redux';
 
 const pizzaReducer = ( state = [], action ) => {
 
-    if( action.type === 'ADD_PIZZA_TO_ORDER' ){
-        return [ ...state, action.payload ]
+    switch (action.type) {
+        case 'ADD_PIZZA_TO_ORDER':
+            return [ ...state, action.payload ]
+            
+        case 'REMOVE_PIZZA_FROM_ORDER':
+            return state.filter(pizza => pizza.id !== action.payload.id);
+            
+        default:
+            break;
     }
+   
     
     return state;
 }
