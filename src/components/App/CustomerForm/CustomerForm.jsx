@@ -3,20 +3,34 @@ import react from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Checkout from '../../Checkout/Checkout';
-
+import { useSelector, useDispatch } from 'react-redux';
 
 function CustomerForm() {
     let [name, setName] = useState('');
     let [address, setAddress] = useState('');
     let [city, setCity] = useState('');
     let [zip, setZip] = useState('');
-    // let propHandoff = [name, address, city, zip];
+    let [type, setType] = useState('');
 
-    let history = useHistory();
+    // make sure the type got properly updated
+    // via the radio button selection
+    console.log('Get our food by:', type);
+
+    const history = useHistory();
+    const dispatch = useDispatch(); 
 
     function submitFunc(e) {
         e.preventDefault();
-            history.push('/checkout');
+
+        // dispatch local state to global state
+        dispatch({
+            type: 'CUSTOMER_FORM_INPUTS',
+            payload: {
+                name, address, city, zip, type
+            }
+        });
+
+        history.push('/checkout');
         }
 
     return (
@@ -28,10 +42,10 @@ function CustomerForm() {
             <input type="text" value={city} onChange={(e) => setCity(e.target.value)}placeholder="City"/>
             <input type="number" value={zip} onChange={(e) => setZip(e.target.value)} placeholder="Zip"/>
 
-            <input type="checkbox" id="pickup" name="pickup" value=""/>
+            <input type="radio" id="pickup" name="type" value="pickup" onClick={() => setType('Pickup')}/>
             <label htmlFor="pickup"> Pickup </label>
 
-            <input type="checkbox" id="delivery" name="delivery" value=""/>
+            <input type="radio" id="delivery" name="type" value="delivery" onClick={() => setType('Delivery')}/>
             <label htmlFor="delivery"> Delivery </label>
 
             <button onClick={submitFunc}>Next</button>

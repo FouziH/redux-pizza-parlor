@@ -1,11 +1,19 @@
 import react from 'react';
+import { useSelector } from 'react-redux';
 
-function Checkout({name}) {
+function Checkout() {
 
-    console.log(name)
+    let customerInputs = useSelector(store => store.customerReducer)
+
     return (
-        `${name}`
-    )
+        <>
+            <p>Customer: {customerInputs.name}</p>
+            <p>Address: {customerInputs.address}</p>
+            <p>City: {customerInputs.city}</p>
+            <p>Zip: {customerInputs.zip}</p>
+            <p>Type: {customerInputs.type}</p>
+        </>
+    );
 }
 
 export default Checkout;
