@@ -33,7 +33,7 @@ function StartOrder () {
         console.log(pizza);
         dispatch({
             type: 'ADD_PIZZA_TO_ORDER',
-            payload: pizza
+            payload: {...pizza, quantity: 1}
         })
     }
 
