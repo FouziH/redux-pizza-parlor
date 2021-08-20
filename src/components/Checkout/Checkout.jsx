@@ -11,6 +11,7 @@ function Checkout() {
             <p>Address: {customerInputs.address}</p>
             <p>City: {customerInputs.city}</p>
             <p>Zip: {customerInputs.zip}</p>
+            <p>Type: {customerInputs.type}</p>
         </>
     );
 }

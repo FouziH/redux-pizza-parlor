@@ -8,7 +8,7 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 // add the customerReducer
-const customerReducer = (state = [], action) => {
+const customerReducer = (state = {}, action) => {
     if (action.type === 'CUSTOMER_FORM_INPUTS') {
         return action.payload;
     }
